@@ -42,6 +42,8 @@
     .intro-mark::after { inset:12%; z-index:0; animation:mark-frame 8s ease-in-out infinite alternate; }
     .mark-study-logo { width:min(360px,58%); animation:mark-float 5.5s ease-in-out infinite alternate; }
     .logo-svg { width:min(720px,88%); opacity:.24; animation:mark-svg-drift 13s ease-in-out infinite alternate; }
+    .mark-study-logo { animation:mark-float 3.8s ease-in-out infinite alternate; }
+    .logo-svg { animation:mark-svg-drift 8s ease-in-out infinite alternate; }
     .proposal-stage { width:min(900px,88vw); height:min(78dvh,760px); aspect-ratio:auto; transform:none; background:#f1ece5; }
     .proposal-view { object-fit:contain; background:#f1ece5; }
     .proposal::after { display:none; }
@@ -50,6 +52,8 @@
     .ai-slide .agency { top:24px; bottom:auto; }
     @keyframes mark-ambient { from { background-position:30% 36%; background-size:145% 145%; } to { background-position:72% 64%; background-size:190% 190%; } }
     @keyframes mark-frame { from { transform:rotate(-12deg) scale(.86) translate3d(-3%,-2%,0); opacity:.25; } to { transform:rotate(9deg) scale(1.12) translate3d(3%,2%,0); opacity:.9; } }
+    @keyframes mark-float { from { transform:translate3d(-12px,12px,0) rotate(-3deg) scale(.97); } to { transform:translate3d(14px,-22px,0) rotate(3deg) scale(1.03); } }
+    @keyframes mark-svg-drift { from { transform:rotate(-16deg) scale(.96) translate3d(-5%,-3%,0); } to { transform:rotate(12deg) scale(1.16) translate3d(5%,4%,0); } }
     @media(max-width:760px){
       .intro-mark { width:90vw; min-height:72dvh; }
       .mark-study-logo { width:min(340px,64%); }

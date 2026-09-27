@@ -446,10 +446,10 @@
       color:var(--bone);
     }
     .mood-card { cursor:zoom-in; }
-    .mood-focus { position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:clamp(58px,8vh,90px) clamp(24px,7vw,110px); background:rgba(23,22,20,.98); opacity:0; visibility:hidden; pointer-events:none; transition:opacity 420ms var(--curve), visibility 420ms var(--curve); }
+    .mood-focus { position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:0; background:rgba(23,22,20,.98); opacity:0; visibility:hidden; pointer-events:none; transition:opacity 420ms var(--curve), visibility 420ms var(--curve); }
     .mood-focus.is-open { opacity:1; visibility:visible; pointer-events:auto; }
     .mood-focus figure { width:100%; height:100%; margin:0; display:grid; place-items:center; }
-    .mood-focus img { display:block; width:auto; height:auto; max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 24px 80px rgba(0,0,0,.36); }
+    .mood-focus img { display:block; width:auto; height:auto; max-width:calc(100vw - 56px); max-height:calc(100dvh - 116px); object-fit:contain; box-shadow:0 24px 80px rgba(0,0,0,.36); }
     .mood-focus-back { position:absolute; z-index:2; top:24px; left:28px; width:50px; height:50px; display:grid; place-items:center; border:1px solid rgba(245,240,232,.42); border-radius:50%; color:var(--bone); background:rgba(23,22,20,.25); cursor:pointer; transition:transform 500ms var(--curve), background 400ms var(--curve); }
     .mood-focus-back:hover { transform:translateX(-4px); background:var(--rust); }
     .mood-focus-back svg { width:18px; height:18px; }
