@@ -45,7 +45,8 @@
     .mark-study-logo { animation:mark-float 3.8s ease-in-out infinite alternate; }
     .logo-svg { animation:mark-svg-drift 8s ease-in-out infinite alternate; }
     .proposal-stage { width:min(900px,88vw); height:min(78dvh,760px); aspect-ratio:auto; transform:none; background:#f1ece5; }
-    .proposal-view { object-fit:contain; background:#f1ece5; }
+    .proposal-view { object-fit:contain; background:#f1ece5; transform:scale(1.012); transition:opacity 1700ms ease-in-out, transform 2600ms ease-out; will-change:opacity,transform; }
+    .proposal-view.is-active { transform:scale(1); }
     .proposal::after { display:none; }
     .proposal-stage { width:min(900px,88vw); height:auto; aspect-ratio:1145 / 1374; }
     .proposal-stage.is-landscape { width:min(900px,88vw); aspect-ratio:1374 / 1145; }
