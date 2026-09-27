@@ -445,6 +445,14 @@
       white-space:normal;
       color:var(--bone);
     }
+    .mood-card { cursor:zoom-in; }
+    .mood-focus { position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:clamp(58px,8vh,90px) clamp(24px,7vw,110px); background:rgba(23,22,20,.98); opacity:0; visibility:hidden; pointer-events:none; transition:opacity 420ms var(--curve), visibility 420ms var(--curve); }
+    .mood-focus.is-open { opacity:1; visibility:visible; pointer-events:auto; }
+    .mood-focus figure { width:100%; height:100%; margin:0; display:grid; place-items:center; }
+    .mood-focus img { display:block; width:auto; height:auto; max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 24px 80px rgba(0,0,0,.36); }
+    .mood-focus-back { position:absolute; z-index:2; top:24px; left:28px; width:50px; height:50px; display:grid; place-items:center; border:1px solid rgba(245,240,232,.42); border-radius:50%; color:var(--bone); background:rgba(23,22,20,.25); cursor:pointer; transition:transform 500ms var(--curve), background 400ms var(--curve); }
+    .mood-focus-back:hover { transform:translateX(-4px); background:var(--rust); }
+    .mood-focus-back svg { width:18px; height:18px; }
     /* Nel caso Frits la composizione si appoggia al bordo inferiore del frame. */
     #case-1-collection .marquee-track,
     #case-2-collection .marquee-track,
@@ -543,17 +551,22 @@
         <div><span class="mood-index">14 / MOODBOARD WALL</span><h2>Sei spunti d'ispirazione</h2></div>>
       </div>
       <div class="mood-wall">           
-        <article class="mood-card mood-left mood-top" aria-label="André Ópticas / mood 01"><div class="card-image" style="background-image:url('./assets/client-provided/mood-first-01.png')"></div><div class="card-copy"><strong>André Ópticas / 01</strong></div></article>
-        <article class="mood-card mood-center mood-top" aria-label="Oliver Peoples / mood 01"><div class="card-image" style="background-image:url('./assets/client-provided/mood-third-01.png')"></div><div class="card-copy"><strong>Oliver Peoples / 01</strong></div></article>
-        <article class="mood-card mood-right mood-top" aria-label="Frits van den Bosch / mood 01"><div class="card-image" style="background-image:url('./assets/client-provided/mood-second-01.png')"></div><div class="card-copy"><strong>Frits van den Bosch / 01</strong></div></article>
-        <article class="mood-card mood-left mood-bottom" aria-label="André Ópticas / mood 02"><div class="card-image" style="background-image:url('./assets/client-provided/mood-first-02.png')"></div><div class="card-copy"><strong>André Ópticas / 02</strong></div></article>
-        <article class="mood-card mood-center mood-bottom" aria-label="Oliver Peoples / mood 02"><div class="card-image" style="background-image:url('./assets/client-provided/mood-third-02.png')"></div><div class="card-copy"><strong>Oliver Peoples / 02</strong></div></article>
-        <article class="mood-card mood-right mood-bottom" aria-label="Frits van den Bosch / mood 02"><div class="card-image" style="background-image:url('./assets/client-provided/mood-second-02.png')"></div><div class="card-copy"><strong>Frits van den Bosch / 02</strong></div></article>
+        <article class="mood-card mood-left mood-top" data-image="./assets/client-provided/mood-first-01.png" aria-label="André Ópticas / mood 01" tabindex="0"><div class="card-image" style="background-image:url('./assets/client-provided/mood-first-01.png')"></div><div class="card-copy"><strong>André Ópticas / 01</strong></div></article>
+        <article class="mood-card mood-center mood-top" data-image="./assets/client-provided/mood-third-01.png" aria-label="Oliver Peoples / mood 01" tabindex="0"><div class="card-image" style="background-image:url('./assets/client-provided/mood-third-01.png')"></div><div class="card-copy"><strong>Oliver Peoples / 01</strong></div></article>
+        <article class="mood-card mood-right mood-top" data-image="./assets/client-provided/mood-second-01.png" aria-label="Frits van den Bosch / mood 01" tabindex="0"><div class="card-image" style="background-image:url('./assets/client-provided/mood-second-01.png')"></div><div class="card-copy"><strong>Frits van den Bosch / 01</strong></div></article>
+        <article class="mood-card mood-left mood-bottom" data-image="./assets/client-provided/mood-first-02.png" aria-label="André Ópticas / mood 02" tabindex="0"><div class="card-image" style="background-image:url('./assets/client-provided/mood-first-02.png')"></div><div class="card-copy"><strong>André Ópticas / 02</strong></div></article>
+        <article class="mood-card mood-center mood-bottom" data-image="./assets/client-provided/mood-third-02.png" aria-label="Oliver Peoples / mood 02" tabindex="0"><div class="card-image" style="background-image:url('./assets/client-provided/mood-third-02.png')"></div><div class="card-copy"><strong>Oliver Peoples / 02</strong></div></article>
+        <article class="mood-card mood-right mood-bottom" data-image="./assets/client-provided/mood-second-02.png" aria-label="Frits van den Bosch / mood 02" tabindex="0"><div class="card-image" style="background-image:url('./assets/client-provided/mood-second-02.png')"></div><div class="card-copy"><strong>Frits van den Bosch / 02</strong></div></article>
 
       </div>
     </section>
 
   </main>
+
+  <div id="mood-focus" class="mood-focus" aria-hidden="true" role="dialog" aria-label="Moodboard ingrandita">
+    <button id="mood-focus-back" class="mood-focus-back" type="button" aria-label="Torna alla raccolta delle moodboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+    <figure><img id="mood-focus-image" src="" alt=""></figure>
+  </div>
 
   <script>
     const visualOrder = [
@@ -566,6 +579,16 @@
       const node = document.querySelector(selector);
       if (node) document.getElementById('archive').appendChild(node);
     });
+
+    const moodFocus=document.getElementById('mood-focus');
+    const moodFocusImage=document.getElementById('mood-focus-image');
+    const moodFocusBack=document.getElementById('mood-focus-back');
+    const closeMoodFocus=()=>{ moodFocus.classList.remove('is-open'); moodFocus.setAttribute('aria-hidden','true'); moodFocusImage.removeAttribute('src'); document.body.style.overflow=''; };
+    const openMoodFocus=(card)=>{ const image=card.dataset.image; if(!image)return; moodFocusImage.src=image; moodFocusImage.alt=card.getAttribute('aria-label')||'Moodboard'; moodFocus.classList.add('is-open'); moodFocus.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; moodFocusBack.focus(); };
+    document.querySelectorAll('.mood-card[data-image]').forEach(card=>{ card.addEventListener('click',()=>openMoodFocus(card)); card.addEventListener('keydown',event=>{ if(event.key==='Enter'||event.key===' '){ event.preventDefault(); openMoodFocus(card); } }); });
+    moodFocusBack.addEventListener('click',closeMoodFocus);
+    moodFocus.addEventListener('click',event=>{ if(event.target===moodFocus)closeMoodFocus(); });
+    document.addEventListener('keydown',event=>{ if(event.key==='Escape'&&moodFocus.classList.contains('is-open'))closeMoodFocus(); });
 
     const caseGallery = {
       'case-1-collection': [
