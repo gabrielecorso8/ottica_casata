@@ -84,7 +84,7 @@
     ];
     const aiStory=document.createElement('div');
     aiStory.id='ai-story';
-    aiStory.innerHTML=aiSlides.map((item,i)=>{const id=`ai-${i+1}`,next=i<aiSlides.length-1?`#ai-${i+2}`:'./index.html';return `<section id="${id}" class="step ai-slide" aria-label="Immagine AI ${i+1}"><div class="ai-slide-photo" style="--photo:url('${item.photo}')"></div><div class="ai-slide-copy"><h2>${String(i+1).padStart(2,'0')}</h2></div><div class="ai-slide-index">${String(i+1).padStart(2,'0')} / ${String(aiSlides.length).padStart(2,'0')}</div><img class="agency" src="./assets/client-provided/corso-arredi-logo.png" alt="Corso Arredi"><a class="arrow" href="${next}" aria-label="Vai alla schermata successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 18 18 6M8 6h10v10"/></svg></a></section>`}).join('');
+    aiStory.innerHTML=aiSlides.map((item,i)=>{const id=`ai-${i+1}`,next=i<aiSlides.length-1?`#ai-${i+2}`:'';return `<section id="${id}" class="step ai-slide" aria-label="Immagine AI ${i+1}"><div class="ai-slide-photo" style="--photo:url('${item.photo}')"></div><div class="ai-slide-copy"><h2>${String(i+1).padStart(2,'0')}</h2></div><div class="ai-slide-index">${String(i+1).padStart(2,'0')} / ${String(aiSlides.length).padStart(2,'0')}</div><img class="agency" src="./assets/client-provided/corso-arredi-logo.png" alt="Corso Arredi">${next?`<a class="arrow" href="${next}" aria-label="Vai alla schermata successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 18 18 6M8 6h10v10"/></svg></a>`:''}</section>`}).join('');
     document.querySelector('main').appendChild(aiStory);
     const steps=[...document.querySelectorAll('.step')],total=steps.length;
     const observer=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add('is-visible')),{threshold:.22});
@@ -106,7 +106,7 @@
         proposalIndex=(proposalIndex+1)%proposalViews.length;
         proposalViews[proposalIndex].classList.add('is-active');
         syncProposalFrame();
-      },6000);
+      },4200);
     }
   </script>
 </body>
