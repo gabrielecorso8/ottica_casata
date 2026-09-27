@@ -48,8 +48,9 @@
     .proposal-view { object-fit:contain; background:#f1ece5; transform:scale(1.012); transition:opacity 1700ms ease-in-out, transform 2600ms ease-out; will-change:opacity,transform; }
     .proposal-view.is-active { transform:scale(1); }
     .proposal::after { display:none; }
-    .proposal-stage { width:min(900px,88vw); height:auto; aspect-ratio:1145 / 1374; }
-    .proposal-stage.is-landscape { width:min(900px,88vw); aspect-ratio:1374 / 1145; }
+    .proposal-stage,
+    .proposal-stage.is-landscape { width:min(900px,88vw); height:min(78dvh,760px); aspect-ratio:auto; }
+    .proposal-view { object-position:center; }
     .ai-slide .agency { top:24px; bottom:auto; }
     @keyframes mark-ambient { from { background-position:30% 36%; background-size:145% 145%; } to { background-position:72% 64%; background-size:190% 190%; } }
     @keyframes mark-frame { from { transform:rotate(-12deg) scale(.86) translate3d(-3%,-2%,0); opacity:.25; } to { transform:rotate(9deg) scale(1.12) translate3d(3%,2%,0); opacity:.9; } }
@@ -59,8 +60,8 @@
       .intro-mark { width:90vw; min-height:72dvh; }
       .mark-study-logo { width:min(340px,64%); }
       .logo-svg { width:92%; }
-      .proposal-stage { width:min(90vw,65dvh); height:auto; }
-      .proposal-stage.is-landscape { width:min(90vw,94dvh); }
+      .proposal-stage,
+      .proposal-stage.is-landscape { width:90vw; height:78dvh; }
       .ai-slide .agency { top:17px; bottom:auto; }
     }
   </style>
