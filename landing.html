@@ -33,6 +33,7 @@
     .cover-title { min-height:100svh; display:grid; place-items:center; padding:11vh 8vw 8vh; background:var(--bone); color:var(--ink); text-align:center; transition:opacity 850ms var(--curve), transform 1000ms var(--curve), filter 900ms var(--curve); }
     .cover-title.is-leaving { opacity:0; transform:translateY(-4vh) scale(.985); filter:blur(6px); }
     .cover-inner { width:min(920px,100%); margin:auto; }
+    .cover-agency { display:block; width:58px; height:58px; object-fit:contain; margin:24px auto 0; border-radius:15px; background:#050607; }
     .cover-brands { display:flex; align-items:center; justify-content:center; gap:26px; margin-bottom:34px; }
     .cover-brands img { display:block; width:82px; height:82px; object-fit:contain; background:#050607; }
     .cover-brands img:first-child { border-radius:20px; }
@@ -378,8 +379,8 @@
     .mood-wall {
       /* La larghezza è ricavata anche dall'altezza disponibile: due righe
          complete entrano nella viewport senza creare una terza porzione nascosta. */
-      width:min(100%,760px,calc(110svh - 260px));
-      max-width:760px;
+      width:min(100%,calc(100svh - 150px),calc(100vw - 8vw));
+      max-width:1100px;
       margin:0 auto;
       grid-template-columns:repeat(3,minmax(0,1fr)) !important;
       grid-template-rows:repeat(2,minmax(0,1fr));
@@ -470,9 +471,7 @@
 
   <main id="archive">
     <section class="story-step cover-title reveal" aria-label="Ottica Casata - presentazione">
-      <div class="title-side title-course"><img src="./assets/client-provided/corso-arredi-logo.png" alt="Logo Corso Arredi"><span>Corso Arredi</span></div>
-      <div class="title-side title-client"><img src="./assets/client-provided/ottica-casata-logo.png" alt="Logo Ottica Casata"><span>Ottica Casata</span></div>
-      <div class="cover-inner"><h1>Ottica Casata Presentazione</h1><p>Corso Arredi / interior direction</p></div>
+      <div class="cover-inner"><h1>Ottica Casata Presentazione</h1><p>Corso Arredi / interior direction</p><img class="cover-agency" src="./assets/client-provided/corso-arredi-logo.png" alt="Logo Corso Arredi"></div>
     </section>
     <section id="case-1" class="story-step case-sequence reveal" data-step="01" aria-label="André Ópticas, Portogallo, Best Store Design MIDO 2026">
       <header class="case-sequence-head"><span>01 / CASO STUDIO</span><h2>André Ópticas</h2><p>Best Store Design - MIDO 2026 / Portogallo</p></header>
@@ -496,7 +495,7 @@
       <header class="case-sequence-head"><span>03 / CASO STUDIO</span><h2>Oliver Peoples</h2><p>Ulteriore spunto / Milano</p></header>
       <div class="sequence-film">
         <figure id="case-3-image-1"><img src="./assets/case-reference/oliver-01.png" alt="Oliver Peoples Milano - interno"></figure>
-        <figure id="case-3-image-2"><img src="./assets/case-reference/oliver-02.png" alt="Oliver Peoples Milano - dettaglio tavolo e montature"></figure>
+        <figure id="case-3-image-2"><img src="./assets/client-provided/oliver-peoples-replacement.png" alt="Oliver Peoples Milano - interno della boutique con vista sulla strada"></figure>
         <figure id="case-3-image-3"><img src="./assets/case-reference/oliver-03.png" alt="Oliver Peoples Milano - vetrina"></figure>
       </div>
       <a class="edge-arrow" href="#case-1-collection" aria-label="Vai alla raccolta André Ópticas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 18 18 6M8 6h10v10"/></svg></a>
@@ -518,7 +517,7 @@
     </div>
 
     <section id="case-2-collection" class="story-step marquee-collection reveal">
-      <div class="marquee-header"><span>02 / Frits van den Bosch</span><h2>Esperienza Openspace</h2><br><br></div>
+      <div class="marquee-header"><span>02 / Frits van den Bosch</span><h2>Esperienza Open Space</h2><br><br></div>
       <div class="marquee-window"><div class="marquee-track reverse">
         <figure class="marquee-frame"><img src="./assets/case-reference/frits-01.png" alt="Frits van den Bosch - spazio centrale"><figcaption>01 / open floor</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/frits-02.png" alt="Frits van den Bosch - tavolo espositivo"><figcaption>02 / brand stage</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/frits-03.png" alt="Frits van den Bosch - customer journey"><figcaption>03 / customer journey</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/frits-01.png" alt="Frits van den Bosch - spazio centrale, loop"><figcaption>04 / room scale</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/frits-02.png" alt="Frits van den Bosch - tavolo espositivo, loop"><figcaption>05 / material pause</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/frits-03.png" alt="Frits van den Bosch - customer journey, loop"><figcaption>06 / retail theatre</figcaption></figure>
         <figure class="marquee-frame"><img src="./assets/case-reference/frits-01.png" alt="Frits van den Bosch - spazio centrale, secondo loop"><figcaption>01 / open floor</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/frits-02.png" alt="Frits van den Bosch - tavolo espositivo, secondo loop"><figcaption>02 / brand stage</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/frits-03.png" alt="Frits van den Bosch - customer journey, secondo loop"><figcaption>03 / customer journey</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/frits-01.png" alt="Frits van den Bosch - spazio centrale, terzo loop"><figcaption>04 / room scale</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/frits-02.png" alt="Frits van den Bosch - tavolo espositivo, terzo loop"><figcaption>05 / material pause</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/frits-03.png" alt="Frits van den Bosch - customer journey, terzo loop"><figcaption>06 / retail theatre</figcaption></figure>
@@ -529,7 +528,7 @@
     </div>
 
     <section id="case-3-collection" class="story-step marquee-collection reveal">
-      <div class="marquee-header"><span>03 / Oliver Peoples</span><h2>Rivisitazione Anni '50<br></h2></div>
+      <div class="marquee-header"><span>03 / Oliver Peoples</span><h2>Rivisitazione Anni '50</h2></div>
       <div class="marquee-window"><div class="marquee-track">
         <figure class="marquee-frame"><img src="./assets/case-reference/oliver-01.png" alt="Oliver Peoples Milano - interno"><figcaption>01 / apartment interior</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/oliver-02.png" alt="Oliver Peoples Milano - display centrale"><figcaption>02 / display language</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/oliver-03.png" alt="Oliver Peoples Milano - vetrina"><figcaption>03 / storefront</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/oliver-01.png" alt="Oliver Peoples Milano - interno, loop"><figcaption>04 / collected room</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/oliver-02.png" alt="Oliver Peoples Milano - display centrale, loop"><figcaption>05 / furniture rhythm</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/oliver-03.png" alt="Oliver Peoples Milano - vetrina, loop"><figcaption>06 / urban frame</figcaption></figure>
         <figure class="marquee-frame"><img src="./assets/case-reference/oliver-01.png" alt="Oliver Peoples Milano - interno, secondo loop"><figcaption>01 / apartment interior</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/oliver-02.png" alt="Oliver Peoples Milano - display centrale, secondo loop"><figcaption>02 / display language</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/oliver-03.png" alt="Oliver Peoples Milano - vetrina, secondo loop"><figcaption>03 / storefront</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/oliver-01.png" alt="Oliver Peoples Milano - interno, terzo loop"><figcaption>04 / collected room</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/oliver-02.png" alt="Oliver Peoples Milano - display centrale, terzo loop"><figcaption>05 / furniture rhythm</figcaption></figure><figure class="marquee-frame"><img src="./assets/case-reference/oliver-03.png" alt="Oliver Peoples Milano - vetrina, terzo loop"><figcaption>06 / urban frame</figcaption></figure>
@@ -541,8 +540,7 @@
 
     <section id="all-moods" class="story-step all-moods reveal" aria-label="Parte 14, raccolta delle sei moodboard">
       <div class="all-moods-head">
-        <div><span class="mood-index">14 / MOODBOARD WALL</span><h2>Sei spunti d'ispirazione del design mondiale</h2></div>
-        <p>Una vista d’insieme per confrontare materiali, colore e atmosfera prima di passare al logo.</p>
+        <div><span class="mood-index">14 / MOODBOARD WALL</span><h2>Sei spunti d'ispirazione</h2></div>>
       </div>
       <div class="mood-wall">           
         <article class="mood-card mood-left mood-top" aria-label="André Ópticas / mood 01"><div class="card-image" style="background-image:url('./assets/client-provided/mood-first-01.png')"></div><div class="card-copy"><strong>André Ópticas / 01</strong></div></article>
